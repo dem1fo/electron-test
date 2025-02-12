@@ -11,7 +11,6 @@
       artifactName: '${productName}-setup.${ext}',
       deleteAppDataOnUninstall: true,
       icon: 'assets/logo.ico',
-      installerIcon: 'assets/logo.ico',
       signtoolOptions: {
         publisherName: 'WFP'
       },
