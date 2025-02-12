@@ -1,0 +1,22 @@
+{
+    appId: 'com.example.simpleelectronapp',
+    win: {
+      target: [
+        {
+          target: 'nsis',
+          arch: ['x64']
+        }
+      ],
+      artifactName: '${productName}-setup.${ext}',
+      signtoolOptions: {
+        publisherName: 'WFP'
+      },
+      azureSignOptions: {
+        certificateProfileName: 'buildingblocks',
+        codeSigningAccountName: 'buildingblocks',
+        endpoint: 'https://weu.codesigning.azure.net',
+        timestampDigest: 'SHA256',
+        timestampRfc3161: 'http://timestamp.acs.microsoft.com'
+      }
+    }
+}
