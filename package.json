@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "clean": "git clean -xdf dist-electron dist release",
     "clean:all": "git clean -xdf dist-electron dist release node_modules",
-    "package": "electron-builder"
+    "package": "electron-builder -p never"
   },
   "keywords": [],
   "author": "",
