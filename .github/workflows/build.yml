@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - '**.md'
+      - '**.spec.js'
+      - '.gitignore'
   release:
     types: [created]
 
@@ -32,4 +36,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: electron-app
-          path: dist/*-setup.exe
+          path: release/*/*-setup.exe
