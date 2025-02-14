@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "dist-electron/main/index.js",
+  "main": "dist-electron/index.js",
   "scripts": {
     "dev": "set NODE_ENV=development& vite",
     "build": "tsc && vite build",
@@ -16,7 +16,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/electron": "^1.4.38",
     "@types/node": "^22.13.1",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",

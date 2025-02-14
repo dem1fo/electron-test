@@ -16,63 +16,23 @@ export default defineConfig(({ command }) => {
   const sourceMap = isServe || !!process.env.VSCODE_DEBUG;
 
   return {
-    build: {
-      outDir: 'dist',
-      rollupOptions: {
-        input: './src/index.html',
-      }
-    },
-    resolve: {
-      '@': join(__dirname, 'src'),
-      common: join(__dirname, 'common')
-    },
-    optimizeDeps: {
-      exclude: [ 'node_modules/.vite/deps' ]
-    },
+    // resolve: {
+    //   '@': join(__dirname, 'src'),
+    //   common: join(__dirname, 'common')
+    // },
+    // optimizeDeps: {
+    //   exclude: [ 'node_modules/.vite/deps' ]
+    // },
     plugins: [
       react(),
       electron({
         main: {
-          entry: 'electron/main/index.ts',
-          onstart(args) {
-            if (process.env.NODE_ENV !== 'development') args.startup();
-          },
-          vite: {
-            build: {
-              sourcemap: sourceMap ? 'inline' : undefined,
-              minify: isBuild,
-              outDir: 'dist-electron/main',
-              rollupOptions: {
-                external: Object.keys('dependencies' in pkg ? pkg.dependencies : {}),
-              }
-            }
-          }
+          entry: 'electron/main/index.ts'
         },
         preload: {
-          input: {
-            index: 'electron/preload/index.mts',
-          },
-          vite: {
-            build: {
-              sourcemap: sourceMap ? 'inline' : undefined,
-              minify: isBuild,
-              outDir: 'dist-electron/preload',
-              output: {
-                format: 'esm',
-                entryFileNames: '[name].js',
-                inlineDynamicImports: false
-              }
-            }
-          }
+          input: 'electron/preload.mts'
         },
       }),
-      renderer()
     ],
-    server: {
-      open: './src/index.html',
-      host: 'localhost',
-      port: 3000,
-    },
-    clearScreen: false,
   };
 });
